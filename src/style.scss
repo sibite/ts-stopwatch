@@ -1,0 +1,78 @@
+@use 'sass:color';
+
+$primary: #0044ff;
+$success: #3cda3c;
+$danger: #db3b3b;
+
+:root {
+  --mobile-max-width: 900px;
+}
+
+body {
+  margin: 0;
+}
+
+.app {
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: system-ui;
+}
+
+$button-size: 50px;
+
+@mixin button-colors($color) {
+  background: adjust-color($color, $alpha: -0.8);
+  color: $color;
+
+  &:active {
+    background: adjust-color($color, $alpha: -0.9);
+  }
+}
+
+.button {
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  text-align: center;
+  
+  width: $button-size;
+  height: $button-size;
+  border-radius: 100%;
+  @include button-colors($primary);
+  
+  font-family: system-ui;
+  font-size: 1.3rem;
+  font-weight: bold;
+
+  transition: all 100ms ease;
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &--hidden {
+    display: none;
+  }
+
+  &--state-success {
+    @include button-colors($success);
+  }
+
+  &--state-danger {
+    @include button-colors($danger);
+  }
+}
+
+.button__icon {
+  font-size: $button-size * 0.6;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

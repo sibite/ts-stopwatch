@@ -3,6 +3,7 @@ import Component from '../component';
 import TimeDisplay from '../time-display/time-display';
 import Toolbar from '../toolbar/toolbar';
 import stopwatchHTML from './stopwatch.html';
+import './stopwatch.scss';
 
 export default class Stopwatch extends Component {
   private timeDisplay = new TimeDisplay();
@@ -70,7 +71,7 @@ export default class Stopwatch extends Component {
 
   @Autobind
   setCountdown(seconds: number) {
-    if (this.running) return;
+    if (this.running || this.elapsedTime > 0) return;
     this.elapsedTime = -seconds * 1e3;
     this.step();
   }

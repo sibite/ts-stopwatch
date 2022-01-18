@@ -5,7 +5,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    main: './src/app/app.ts',
+    main: './src/app.ts',
   },
   output: {
     filename: 'main.[contenthash].js',

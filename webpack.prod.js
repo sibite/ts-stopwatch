@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable import/no-extraneous-dependencies */
 const { default: MiniCssExtractPlugin } = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { default: merge } = require('webpack-merge');
 const common = require('./webpack.common');
@@ -17,6 +18,12 @@ module.exports = merge(common, {
           'sass-loader',
         ],
       },
+    ],
+  },
+  optimization: {
+    minimizer: [
+      '...',
+      new CssMinimizerPlugin(),
     ],
   },
   plugins: [

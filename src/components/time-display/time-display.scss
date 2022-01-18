@@ -1,0 +1,29 @@
+@use '../../vars';
+
+.stopwatch__time-display {
+  color: black;
+  margin: 0 auto;
+  text-align: center;
+  transition: color 200ms ease;
+}
+
+.stopwatch__time-display--countdown {
+  color: rgb(255, 86, 86);
+}
+
+.stopwatch__time-display-text {
+  margin: 0;
+  margin-bottom: 60px;
+  color: inherit;
+  font-weight: bold;
+  font-variant-numeric: tabular-nums;
+  font-size: 6em;
+
+  @media (max-width: 800px) {
+    font-size: 15vw;
+  }
+
+  // @media (max-width: vars.$mobile-max-width) {
+  //   font-size: 3em;
+  // }
+}

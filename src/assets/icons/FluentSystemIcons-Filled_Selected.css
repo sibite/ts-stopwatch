@@ -1,0 +1,53 @@
+@font-face {
+    font-family: "FluentSystemIcons-Filled";
+    src: url("./FluentSystemIcons-Filled.ttf?122bce31e537ce15e3b857443913f8f1") format("truetype");
+}
+
+i[class^="icon-"]:before, i[class*=" icon-"]:before {
+    font-family: FluentSystemIcons-Filled !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-ic_fluent_play_20_filled:before {
+  content: "\f60f";
+}
+.icon-ic_fluent_play_24_filled:before {
+  content: "\f610";
+}
+.icon-ic_fluent_play_48_filled:before {
+  content: "\f611";
+}
+.icon-ic_fluent_play_circle_24_filled:before {
+  content: "\f612";
+}
+.icon-ic_fluent_pause_16_filled:before {
+    content: "\f5aa";
+}
+.icon-ic_fluent_pause_20_filled:before {
+    content: "\f5ab";
+}
+.icon-ic_fluent_pause_24_filled:before {
+    content: "\f5ac";
+}
+.icon-ic_fluent_pause_48_filled:before {
+    content: "\f5ad";
+}
+.icon-ic_fluent_stop_16_filled:before {
+    content: "\f741";
+}
+.icon-ic_fluent_stop_20_filled:before {
+    content: "\f742";
+}
+.icon-ic_fluent_stop_24_filled:before {
+    content: "\f743";
+}
+.icon-ic_fluent_time_picker_24_filled:before {
+    content: "\f83d";
+}

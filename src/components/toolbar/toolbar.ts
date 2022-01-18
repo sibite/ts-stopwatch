@@ -2,6 +2,7 @@ import Autobind from '../../decorators/autobind.decorator';
 import Component from '../component';
 import ToolbarSubscriptionsType from './toolbar-subscriptions.type';
 import toolbarHTML from './toolbar.html';
+import './toolbar.scss';
 
 export default class Toolbar extends Component {
   private startBtn = this.hostEl.querySelector('#start') as HTMLButtonElement;
@@ -26,35 +27,57 @@ export default class Toolbar extends Component {
       button.classList.add('button');
       button.id = `countdown-${seconds}`;
       button.textContent = seconds.toString();
-      button.onclick = () => this.subscriptions.setCountdown(seconds);
+      button.onpointerup = () => this.onCountdownOptionPicked(seconds);
       this.coutdownsToolbar.appendChild(button);
     });
   }
 
   private addEventListeners() {
-    this.startBtn.onclick = this.onStartClick;
-    this.pauseBtn.onclick = this.onPauseClick;
-    this.stopBtn.onclick = this.onStopClick;
-    this.pickCountdownBtn.onclick = this.onCountdownPickClick;
+    this.startBtn.onpointerup = this.onStartClick;
+    this.pauseBtn.onpointerup = this.onPauseClick;
+    this.stopBtn.onpointerup = this.onStopClick;
+    this.pickCountdownBtn.onpointerup = this.onCountdownPickClick;
+  }
+
+  private hideButton(button: HTMLButtonElement) {
+    button.classList.add('button--hidden');
+  }
+
+  private unhideButton(button: HTMLButtonElement) {
+    button.classList.remove('button--hidden');
   }
 
   @Autobind
   private onStartClick() {
     this.subscriptions.start();
+    this.coutdownsToolbar.classList.add('stopwatch__countdowns--hidden');
+    this.hideButton(this.stopBtn);
+    this.hideButton(this.pickCountdownBtn);
+    this.hideButton(this.startBtn);
   }
 
   @Autobind
   private onPauseClick() {
     this.subscriptions.pause();
+    this.unhideButton(this.stopBtn);
+    this.unhideButton(this.startBtn);
   }
 
   @Autobind
   private onStopClick() {
     this.subscriptions.stop();
+    this.unhideButton(this.stopBtn);
+    this.unhideButton(this.pickCountdownBtn);
+    this.unhideButton(this.startBtn);
   }
 
   @Autobind
   private onCountdownPickClick() {
     this.coutdownsToolbar.classList.toggle('stopwatch__countdowns--hidden');
+  }
+
+  @Autobind
+  private onCountdownOptionPicked(seconds: number) {
+    this.subscriptions.setCountdown(seconds);
   }
 }
