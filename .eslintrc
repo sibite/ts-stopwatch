@@ -11,7 +11,8 @@
     "@typescript-eslint/no-inferrable-types": ["error", {
         "ignoreParameters": true,
         "ignoreProperties": false
-    }]
+    }],
+    "class-methods-use-this": "off"
   },
   "plugins": [
     "@typescript-eslint"
@@ -19,8 +20,6 @@
   "extends": [
     "airbnb-base",
     "airbnb-typescript/base",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ]
 }
