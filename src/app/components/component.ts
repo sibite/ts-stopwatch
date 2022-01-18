@@ -19,6 +19,4 @@ export default abstract class Component {
   public appendTo(parentEl: HTMLElement) {
     parentEl.append(this.hostEl);
   }
-
-  abstract onInit(): void;
 }

@@ -1,5 +1,5 @@
 import Stopwatch from './components/stopwatch/stopwatch';
-import './style.scss';
+import '../style.scss';
 
 const appHost = document.getElementById('app') as HTMLDivElement;
 const stopwatch = new Stopwatch();

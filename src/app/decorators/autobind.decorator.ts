@@ -4,7 +4,7 @@ export default function Autobind(
   descriptor: PropertyDescriptor,
 ): PropertyDescriptor {
   return {
-    configurable: false,
+    configurable: descriptor.configurable,
     enumerable: descriptor.enumerable,
     get() {
       return descriptor.value.bind(this);
