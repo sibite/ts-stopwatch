@@ -15,10 +15,12 @@ export default class Stopwatch extends Component {
       stop: this.stop,
       setCountdown: this.setCountdown,
     },
-    [2, 5, 10, 30],
+    [0, 2, 5, 10, 30],
   );
 
   private running = false;
+
+  private countdown = 0;
 
   private elapsedTime = 0;
 
@@ -64,7 +66,7 @@ export default class Stopwatch extends Component {
 
   @Autobind
   stop() {
-    this.elapsedTime = 0;
+    this.elapsedTime = this.countdown;
     this.running = false;
     this.step();
   }
@@ -72,7 +74,9 @@ export default class Stopwatch extends Component {
   @Autobind
   setCountdown(seconds: number) {
     if (this.running || this.elapsedTime > 0) return;
-    this.elapsedTime = -seconds * 1e3;
+    const countdown = -seconds * 1e3;
+    this.elapsedTime = countdown;
+    this.countdown = countdown;
     this.step();
   }
 

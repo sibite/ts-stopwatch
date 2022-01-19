@@ -2,24 +2,31 @@
 @import url('../../assets/icons/FluentSystemIcons-Filled_Selected.css');
 
 .stopwatch__controls, .stopwatch__countdowns {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-  width: 290px;
-
   margin: auto;
   margin-top: 20px;
-
-  @media (max-width: vars.$mobile-max-width) {
-    width: 250px;
-  }
 }
 
-.stopwatch__countdowns {
+.stopwatch__countdowns-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 77px;
+  box-sizing: border-box;
+  max-width: 100vw;
+  padding: 0 14px;
   transition: opacity 100ms ease;
 }
 
-.stopwatch__countdowns--hidden {
+.stopwatch__countdowns-wrapper--hidden {
   opacity: 0;
+  display: none;
+}
+
+.stopwatch__countdowns {
+  width: max-content;
+}
+
+#pause.button--disabled {
+  display: initial;
+  pointer-events: none;
+  opacity: 0.5;
 }

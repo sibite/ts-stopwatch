@@ -28,7 +28,7 @@ $button-size: 50px;
   background: adjust-color($color, $alpha: -0.8);
   color: $color;
 
-  &:active {
+  &:not(&--hidden):active {
     background: adjust-color($color, $alpha: -0.9);
   }
 }
@@ -37,9 +37,12 @@ $button-size: 50px;
   border: none;
   outline: none;
   -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  white-space: nowrap;
   cursor: pointer;
   text-align: center;
   
+  margin: 0 14px;
   width: $button-size;
   height: $button-size;
   border-radius: 100%;
@@ -49,13 +52,16 @@ $button-size: 50px;
   font-size: 1.3rem;
   font-weight: bold;
 
-  transition: all 100ms ease;
+  transition:
+    transform 100ms ease,
+    background 100ms ease;
 
-  &:active {
+  &:not(&--hidden):active {
     transform: scale(0.9);
   }
 
   &--hidden {
+    cursor: default;
     display: none;
   }
 
