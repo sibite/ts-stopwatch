@@ -7,4 +7,4 @@
 
 ## Running in development
 
-Run `npm run serve` and navigate to `localhost:8080'
+Run `npm run serve` and navigate to `localhost:8080`

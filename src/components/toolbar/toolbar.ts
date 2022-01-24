@@ -19,9 +19,12 @@ export default class Toolbar extends Component {
 
   private coutdownsToolbarWrapper = this.hostEl.querySelector('.stopwatch__countdowns-wrapper') as HTMLDivElement;
 
+  private isInPlayingMode = false;
+
   constructor(private subscriptions: ToolbarSubscriptionsType, countdownOptions: number[]) {
     super(toolbarHTML);
-    this.addEventListeners();
+    this.addPointerListeners();
+    this.addKeyboardListener();
     this.removeWhitespaces();
     this.appendCountdownButtons(countdownOptions);
     this.setInitialButtonsVisibility();
@@ -52,11 +55,23 @@ export default class Toolbar extends Component {
     this.unhideButton(this.startBtn);
   }
 
-  private addEventListeners() {
+  private addPointerListeners() {
     this.startBtn.onpointerup = this.onStartClick;
     this.pauseBtn.onpointerup = this.onPauseClick;
     this.stopBtn.onpointerup = this.onStopClick;
     this.pickCountdownBtn.onpointerup = this.onCountdownPickClick;
+  }
+
+  private addKeyboardListener() {
+    window.onkeypress = (event: KeyboardEvent) => {
+      if (event.key !== ' ') return;
+      event.preventDefault();
+      if (this.isInPlayingMode) {
+        this.onPauseClick();
+      } else {
+        this.onStartClick();
+      }
+    };
   }
 
   private hideButton(button: HTMLButtonElement) {
@@ -86,6 +101,7 @@ export default class Toolbar extends Component {
     this.hideButton(this.stopBtn);
     this.hideButton(this.pickCountdownBtn);
     this.hideButton(this.startBtn);
+    this.isInPlayingMode = true;
   }
 
   @Autobind
@@ -94,12 +110,14 @@ export default class Toolbar extends Component {
     this.disableButton(this.pauseBtn);
     this.unhideButton(this.stopBtn);
     this.unhideButton(this.startBtn);
+    this.isInPlayingMode = false;
   }
 
   @Autobind
   private onStopClick() {
     this.subscriptions.stop();
     this.setInitialButtonsVisibility();
+    this.isInPlayingMode = false;
   }
 
   @Autobind
