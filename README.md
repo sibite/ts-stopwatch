@@ -1,4 +1,4 @@
-# Timer with countdown feature
+# Stopwatch with countdown feature
 
 ## Deployment
 

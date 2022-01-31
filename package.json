@@ -1,7 +1,7 @@
 {
-  "name": "ts-timer",
+  "name": "ts-stopwatch",
   "version": "1.0.0",
-  "description": "Simple timer in TypeScript",
+  "description": "Simple stopwatch in TypeScript",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack serve --config webpack.dev.js",
